@@ -10,7 +10,6 @@ class PassportAuthController extends Controller
     
     public function register(Request $request)
     {
-        return response()->json(['token' => 'ddf'], 200);
         $this->validate($request, [
             'name' => 'required|min:4',
             'email' => 'required|email',
@@ -22,6 +21,8 @@ class PassportAuthController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
+
+        return response()->json(['data' => $user->toArray()], 200);
 
         $token = $user->createToken('LaravelAuthApp')->accessToken;
 
