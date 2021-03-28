@@ -10,6 +10,7 @@ class PassportAuthController extends Controller
     
     public function register(Request $request)
     {
+        return response()->json(['token' => 'ddf'], 200);
         $this->validate($request, [
             'name' => 'required|min:4',
             'email' => 'required|email',
