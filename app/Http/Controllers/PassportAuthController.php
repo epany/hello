@@ -16,14 +16,12 @@ class PassportAuthController extends Controller
             'password' => 'required|min:8',
         ]);
 
-        return response()->json(['validate' => 'true'], 200);
-
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email
         ]);
 
-        return response()->json(['data' => $user->toArray()], 200);
+        return response()->json(['data' => 'user'], 200);
 
         $token = $user->createToken('LaravelAuthApp')->accessToken;
 
