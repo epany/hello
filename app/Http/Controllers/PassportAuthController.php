@@ -16,6 +16,8 @@ class PassportAuthController extends Controller
             'password' => 'required|min:8',
         ]);
 
+        return response()->json(['validate' => 'true'], 200);
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
